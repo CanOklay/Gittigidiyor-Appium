@@ -4,9 +4,12 @@ import com.thoughtworks.gauge.Gauge;
 import com.thoughtworks.gauge.Step;
 import driver.Driver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.interactions.touch.TouchActions;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,6 +44,7 @@ public class StepImplementation extends Driver {
 
     @Step("Sepete ekle butonuna tıklanır")
     public void addBasket() {
+        scroll(852, 1065, 906, 329);
         MobileElement elementFive = (MobileElement) appiumDriver.findElementById("btnAddBasket");
         elementFive.click();
     }
@@ -67,11 +71,22 @@ public class StepImplementation extends Driver {
     @Step("Ekran görüntüsü al ve <picturename> ismiyle kaydet")
     public void takesScreenshot(String pictureName) throws IOException {
         String filename = "images/" + (pictureName) + ".png";
-        File file = new File("reports/gtml-report/" + filename);
+        File file = new File("reports/html-report/" + filename);
         if (file.exists())
             file.delete();
         File scrFile = ((TakesScreenshot)appiumDriver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, file);
         Gauge.writeMessage("<img src='../" + filename + "' width = '800' height = '480'");
+    }
+
+    public void scroll(int startx, int starty, int endx, int endy) {
+
+        TouchAction touchAction = new TouchAction(appiumDriver);
+
+        touchAction.longPress(PointOption.point(startx, starty))
+                .moveTo(PointOption.point(endx, endy))
+                .release()
+                .perform();
+
     }
 }
