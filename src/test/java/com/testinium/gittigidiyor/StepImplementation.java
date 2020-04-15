@@ -90,6 +90,7 @@ public class StepImplementation extends Driver {
         File scrFile = ((TakesScreenshot)appiumDriver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, file);
         Gauge.writeMessage("<img src='../" + filename + "' width = '800' height = '480'");
+        System.out.println("Screenshot alındı");
     }
 
     /*@Step("<key> email adresine mail gönderilir")
