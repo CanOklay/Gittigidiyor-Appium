@@ -1,17 +1,18 @@
-Getting Started with Gauge
+Gittigidiyor-Test
 ==========================
 
-This is an executable specification file. This file follows markdown syntax. Every heading in this file denotes a scenario. Every bulleted point denotes a step.
-To execute this specification, use `mvn test`
+Login Scenario
+--------------
+* Hesabım kısmına gidilir, "testiniumproje@gmail.com" bilgisi yazılır, "1301010010Fc" bilgisi yazılır, "canoklay@gmail.com" adresine mail gönderilir.
 
-
-Get Started
------------
+Search Scenario
+---------------
 * Arama alanına tıklanır
 * Arama kısmına "telefon" yazılır
 * Kayda başla ve bitir
 * Açılan sekmeye tıklanır
 * Açılan ürünlerden ilki seçilir
+* Ekran görüntüsü al ve "Ürün sayfası" ismiyle kaydet
 * Üründen "1" adet ekle
 * Sepete ekle butonuna tıklanır
 * Sepetim sekmesine gidilir
